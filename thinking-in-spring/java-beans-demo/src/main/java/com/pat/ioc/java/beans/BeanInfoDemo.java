@@ -1,9 +1,6 @@
 package com.pat.ioc.java.beans;
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
+import java.beans.*;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +14,23 @@ public class BeanInfoDemo {
         BeanInfo beanInfo = Introspector.getBeanInfo(Person.class, Object.class);
         Stream.of(beanInfo.getPropertyDescriptors())
                 .forEach(propertyDescriptor -> {
-                    System.out.println(propertyDescriptor);
+//                    System.out.println(propertyDescriptor);
+
+                    // PropertyDescriptor 允许添加谁能够编辑器 - PropertyEditor
+                    // GUI -》 text(String) -> PropertyType
+                    Class<?> propertyType = propertyDescriptor.getPropertyType();
+                    if ("age".equals(propertyDescriptor)) { // 为 age 字段/属性增加 PropertyEditor
+                        // String -> Integer
+                        // Integer.valueOf("")
+                        propertyDescriptor.setPropertyEditorClass(StringToIntegerProperEditor.class);
+//                        propertyDescriptor.createPropertyEditor();
+                    }
                 });
+    }
+
+    static class StringToIntegerProperEditor extends PropertyEditorSupport {
+        public void setAsText(String text) throws java.lang.IllegalArgumentException {
+            setValue(text);
+        }
     }
 }
