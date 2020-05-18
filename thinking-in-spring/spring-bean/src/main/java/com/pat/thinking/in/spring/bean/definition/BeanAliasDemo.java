@@ -14,7 +14,7 @@ public class BeanAliasDemo {
     public static void main(String[] args) {
         // 配置XML配置文件
         // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("META-INF/dependency-definitions-context.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("META-INF/bean-definitions-context.xml");
         // 通过别名获取 bean
         User user = beanFactory.getBean("user", User.class);
         User patUser = beanFactory.getBean("pat-user", User.class);

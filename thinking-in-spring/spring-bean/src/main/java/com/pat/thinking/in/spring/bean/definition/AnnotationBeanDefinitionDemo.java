@@ -1,12 +1,17 @@
 package com.pat.thinking.in.spring.bean.definition;
 
 import com.pat.thinking.in.spring.ioc.overview.domain.User;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import java.util.Map;
+
+import static org.springframework.beans.factory.support.BeanDefinitionBuilder.genericBeanDefinition;
 
 /**
  * @Description BeanDefinition 示例
@@ -24,7 +29,14 @@ public class AnnotationBeanDefinitionDemo {
         // 注册 Configuration Class （配置类）
         applicationContext.register(Config.class);
 
+        // 通过 BeanDefinition 注册 API
+        // 1. 命名 Bean 的注册方式
+        registerUserBeanDefinition(applicationContext, "pat-user");
+        // 1. 非命名 Bean 的注册方式
+        registerBeanDefinition(applicationContext);
+        // 启动 Spring 上下文
         applicationContext.refresh();
+        // 按照类型依赖查找
         System.out.println("Config 类型的所有 Beans" + applicationContext.getBeansOfType(Config.class));
         System.out.println("User 类型的所有 Beans" + applicationContext.getBeansOfType(User.class));
 
@@ -32,6 +44,31 @@ public class AnnotationBeanDefinitionDemo {
         applicationContext.close();
 
     }
+
+    /**
+     * 命名 Bean 的注册方式
+     * @param registry
+     * @param beanName
+     */
+    public static void registerUserBeanDefinition(BeanDefinitionRegistry registry, String beanName) {
+        BeanDefinitionBuilder beanDefinitionBuilder = genericBeanDefinition(User.class);
+        beanDefinitionBuilder
+                .addPropertyValue("id", 1L)
+                .addPropertyValue("name", "pat");
+
+        // 判断如果 beanName 参数存在时
+        if (StringUtils.hasText(beanName)) {
+            // 注册 BeanDefinition
+            registry.registerBeanDefinition(beanName, beanDefinitionBuilder.getBeanDefinition());
+        } else {
+            BeanDefinitionReaderUtils.registerWithGeneratedName(beanDefinitionBuilder.getBeanDefinition(), registry);
+        }
+    }
+
+    public static void registerBeanDefinition(BeanDefinitionRegistry registry) {
+        registerUserBeanDefinition(registry, null);
+    }
+
 
     // 2. 通过 @Component 方式
     @Component // 定义当前类作为 Spring Bean （组件）
