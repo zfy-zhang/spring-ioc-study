@@ -31,9 +31,9 @@ public class AnnotationBeanDefinitionDemo {
 
         // 通过 BeanDefinition 注册 API
         // 1. 命名 Bean 的注册方式
-        registerUserBeanDefinition(applicationContext, "pat-user");
+//        registerUserBeanDefinition(applicationContext, "pat-user");
         // 1. 非命名 Bean 的注册方式
-        registerBeanDefinition(applicationContext);
+//        registerBeanDefinition(applicationContext);
         // 启动 Spring 上下文
         applicationContext.refresh();
         // 按照类型依赖查找
@@ -73,12 +73,15 @@ public class AnnotationBeanDefinitionDemo {
     // 2. 通过 @Component 方式
     @Component // 定义当前类作为 Spring Bean （组件）
     public static class Config {
+
+        // 1. 通过 @Bean 方式定义
         /**
          *  1. 通过 @Bean 方式定义
          * 通过 Java 注解的方式， 定义一个Bean
          * @return
          */
-        @Bean
+        @Bean(name = {"pat", "pat-user"})
+//        @Bean
         public User user() {
             User user = new User();
             user.setId(1L);

@@ -29,7 +29,9 @@ public class DependencyLookupDemo {
         lookCollectionByType(beanFactory);
         // 通过注解查找对象
         lookupByAnnotationType(beanFactory);
+        // 实时查找
 //        lookupInRealTime(beanFactory);
+        // 延迟查找
 //        lookupInLazy(beanFactory);
     }
 

@@ -14,9 +14,9 @@
         <!--  手动配置   -->
 <!--        <property name="users">-->
 <!--            <util:list>-->
-        <!--                <ref bean="superUser"/>-->
+<!--                        <ref bean="superUser"/>-->
 
-        <!--                <ref bean="user"/>-->
+<!--                        <ref bean="user"/>-->
 <!--            </util:list>-->
 <!--        </property>-->
     </bean>

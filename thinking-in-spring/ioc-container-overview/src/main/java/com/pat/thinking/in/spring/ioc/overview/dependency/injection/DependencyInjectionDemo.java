@@ -26,6 +26,7 @@ public class DependencyInjectionDemo {
 
 
         ObjectFactory userFactory = userRepository.getUserObjectFactory();
+        System.out.println(userFactory.getObject());
 
         System.out.println(userFactory.getObject() == applicationContext);
 
@@ -38,11 +39,11 @@ public class DependencyInjectionDemo {
         System.out.println("获取 Environment 类型的 Bean：" + environment);
     }
 
-    private static void whoIsIocContainer(UserRepository userRepository, BeanFactory beanFactory) {
-        // ConfigurableApplication <- Application <- BeanFactory
+    private static void whoIsIocContainer(UserRepository userRepository, ApplicationContext applicationContext) {
+        // ConfigurableApplicationContext <- ApplicationContext <- BeanFactory
         // ConfigurableApplication#getBeanFactory()
         // 这个表达式为什么不成立
-        System.out.println(userRepository.getBeanFactory() == beanFactory);
+        System.out.println(userRepository.getBeanFactory() == applicationContext);
         // Application is BeanFactory
     }
 }
