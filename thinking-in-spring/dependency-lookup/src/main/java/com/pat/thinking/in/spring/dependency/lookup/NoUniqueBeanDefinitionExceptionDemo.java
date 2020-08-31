@@ -5,7 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 
 /**
- * @Description:
+ * @Description: {@link NoUniqueBeanDefinitionException} 实例
  * @Author <a href="mailto:zfy_zang@163.com">Vincent</a>
  * @Create 2020/8/31
  * @Modify
