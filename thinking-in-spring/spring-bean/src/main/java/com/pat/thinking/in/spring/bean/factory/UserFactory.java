@@ -9,6 +9,8 @@ import com.pat.thinking.in.spring.ioc.overview.domain.User;
  * @Modify
  */
 public interface UserFactory {
+
+    // Java 8 接口的默认抽象实现
     default User createUser() {
         return  User.createUser();
     }
