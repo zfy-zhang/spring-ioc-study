@@ -1,11 +1,9 @@
 package com.pat.thinking.in.spring.dependency.injection;
 
-import com.pat.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 /**
  * @Description: 基于 API 注解的依赖 Setter 方法注入示例
@@ -14,13 +12,11 @@ import org.springframework.context.annotation.Bean;
  * @Modify
  * @since
  */
-public class APIDependencySetterInjectionDemo {
+public class ApiDependencyConstructorInjectionDemo {
     public static void main(String[] args) {
+
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-
-        // 注册 Configuration Class （配置类）
-//        applicationContext.register(APIDependencySetterInjectionDemo.class);
 
         // 生成 UserHolder 的 BeanDefinition
         BeanDefinition userHolderBeanDefinition = createUserHolderBeanDefinition();
@@ -50,7 +46,7 @@ public class APIDependencySetterInjectionDemo {
      */
     private static BeanDefinition createUserHolderBeanDefinition() {
         BeanDefinitionBuilder definitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(UserHolder.class);
-        definitionBuilder.addPropertyReference("user", "superUser");
+        definitionBuilder.addConstructorArgReference("superUser");
         return definitionBuilder.getBeanDefinition();
     }
 //    @Bean
