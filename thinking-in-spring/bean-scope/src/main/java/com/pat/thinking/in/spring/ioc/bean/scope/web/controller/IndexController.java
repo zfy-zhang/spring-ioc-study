@@ -29,7 +29,7 @@ public class IndexController {
         // JSP EL 变量搜索路径 page -> request -> session -> application(ServletContext)
         // userObject -> 渲染上下文
         // user 对象存在 ServletContext，上下文名称：scopedTarget.user == 新生成 Bean 名称
-        model.addAttribute("user", user);
+        model.addAttribute("userObject", user);
         return "index";
     }
 }
