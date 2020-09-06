@@ -19,6 +19,9 @@
         <property name="workCities" value="SHANGHAI,HANGZHOU"/>
         <property name="lifeCities" value="SHANGHAI,HANGZHOU"/>
         <property name="configFileLocation" value="classpath:META-INF/user-config.properties"/>
+<!--        <property name="bean">-->
+<!--            <bean id="innerBean"/> &lt;!&ndash; bean containingBeanDefinition &ndash;&gt;-->
+<!--        </property>-->
     </bean>
 
     <bean id="superUser" class="com.pat.thinking.in.spring.ioc.overview.domain.SuperUser" parent="user" primary="true">
