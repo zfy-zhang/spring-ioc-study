@@ -7,6 +7,7 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * @Description:
@@ -15,7 +16,8 @@ import javax.annotation.PostConstruct;
  * @Modify
  * @since
  */
-public class UserHolder implements BeanNameAware, BeanFactoryAware, BeanClassLoaderAware, EnvironmentAware, InitializingBean {
+public class UserHolder implements BeanNameAware, BeanFactoryAware, BeanClassLoaderAware, EnvironmentAware, InitializingBean,
+        SmartInitializingSingleton, DisposableBean {
 
     private final User user;
 
@@ -83,6 +85,27 @@ public class UserHolder implements BeanNameAware, BeanFactoryAware, BeanClassLoa
         System.out.println("init() = " + description);
     }
 
+    @PreDestroy
+    public void preDestroy() {
+        // v9 -> v10
+        this.description = "v10";
+        System.out.println("preDestroy:" + description);
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        // v10 -> v11
+        this.description = "v11";
+        System.out.println("destroy:" + description);
+    }
+
+    public void doDestroy() throws Exception {
+        // v10 -> v11
+        this.description = "v12";
+        System.out.println("doDestroy:" + description);
+    }
+
+
     @Override
     public String toString() {
         return "UserHolder{" +
@@ -113,4 +136,15 @@ public class UserHolder implements BeanNameAware, BeanFactoryAware, BeanClassLoa
         this.environment = environment;
     }
 
+    @Override
+    public void afterSingletonsInstantiated() {
+        // v6 postProcessAfterInitialization -> v8 afterSingletonsInstantiated
+        this.description = "v8";
+        System.out.println("afterSingletonsInstantiated() = " + description);
+    }
+
+
+    protected void finalize() throws Throwable {
+        System.out.println("UserHolder is initialized");
+    }
 }
