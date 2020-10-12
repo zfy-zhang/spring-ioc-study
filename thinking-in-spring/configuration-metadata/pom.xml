@@ -14,9 +14,16 @@
     <dependencies>
         <!--    复用 ioc-container-overview   -->
         <dependency>
-            <groupId>${groupId}</groupId>
+            <groupId>com.pat</groupId>
             <artifactId>ioc-container-overview</artifactId>
-            <version>${version}</version>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.18</version>
         </dependency>
     </dependencies>
 

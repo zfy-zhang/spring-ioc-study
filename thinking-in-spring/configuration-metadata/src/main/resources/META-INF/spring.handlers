@@ -1,0 +1,2 @@
+## 定义 namespaceHandler
+http\://time.geekbang.org/schema/users=com.pat.thinking.in.spring.configuration.metadata.UsersNamespaceHandler
