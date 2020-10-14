@@ -1,9 +1,6 @@
 package com.pat.thinking.in.spring.event;
 
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -51,6 +48,9 @@ public class ApplicationListenerDemo implements ApplicationEventPublisherAware {
 
         context.start();
 
+        // 停止 Spring 应用上下文
+        context.stop();
+
         context.close();
     }
 
@@ -59,8 +59,26 @@ public class ApplicationListenerDemo implements ApplicationEventPublisherAware {
         applicationEventPublisher.publishEvent(new ApplicationEvent("Hello World!!!!!") {
         });
 
-        applicationEventPublisher.publishEvent("----------------");
+        applicationEventPublisher.publishEvent(new MyPayloadApplicationEvent(this, "lalalalalalalalalalalallala"));
 
+    }
+
+    static class MyPayloadApplicationEvent<String> extends PayloadApplicationEvent<String> {
+
+        /**
+         * Create a new PayloadApplicationEvent.
+         *
+         * @param source  the object on which the event initially occurred (never {@code null})
+         * @param payload the payload object (never {@code null})
+         */
+        public MyPayloadApplicationEvent(Object source, String payload) {
+            super(source, payload);
+        }
+    }
+
+    @EventListener
+    public void onPayloadApplicationEvent(PayloadApplicationEvent<String> event) {
+        println("onPayloadApplicationEvent - 接收到 Spring PayloadApplicationEvent：" + event);
     }
 
     static class MyApplicationListener implements ApplicationListener {
