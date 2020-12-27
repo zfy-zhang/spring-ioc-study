@@ -22,9 +22,8 @@ import java.util.Map;
 @Configuration
 public class AnnotationApplicationContextAsIocContainerDemo {
     public static void main(String[] args) {
-        // 创建 BeanFactory 容器
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
+        // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将 AnnotationApplicationContextAsIocContainerDemo 作为配置类（Configuration Class）
         applicationContext.register(AnnotationApplicationContextAsIocContainerDemo.class);

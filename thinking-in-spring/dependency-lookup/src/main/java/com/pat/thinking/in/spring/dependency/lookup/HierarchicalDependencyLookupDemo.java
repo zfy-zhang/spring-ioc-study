@@ -63,7 +63,7 @@ public class HierarchicalDependencyLookupDemo {
                 return true;
             }
         }
-        return beanFactory.containsBean(beanName);
+        return beanFactory.containsLocalBean(beanName);
     }
 
     private static void displayContainsLocalBean(HierarchicalBeanFactory beanFactory, String beanName) {

@@ -18,8 +18,8 @@ public class BeanDefinitionCreationDemo {
         // 1. 通过 BeanDefinitionBuilder 构建
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(User.class);
         // 通过属性设置
-        beanDefinitionBuilder.addPropertyValue("id", 1);
-        beanDefinitionBuilder.addPropertyValue("name", "pat");
+        beanDefinitionBuilder.addPropertyValue("id", 1)
+                .addPropertyValue("name", "pat");
         // 获取 BeanDefinition实例
         BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         // BeanDefinition 并非是 Bean 最终状态，可以自定义修改

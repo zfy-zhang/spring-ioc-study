@@ -38,7 +38,7 @@ public class AnnotationDependencyInjectionResolutionDemo {
     @Autowired          // 依赖查找（处理）
     private User user; // DependencyDescriptor ->
                         // 必须（require=true）
-                        // 实时注入（eager=true）
+                        // （eager=true）
                         // 通过类型（User.class）
                         // 字段名称（"user"）
                         // 是否首要（primary=true)
