@@ -19,6 +19,12 @@
         <module>configuration-metadata</module>
         <module>event</module>
         <module>aop-overview</module>
+        <module>resource</module>
+        <module>i18n</module>
+        <module>validation</module>
+        <module>data-binding</module>
+        <module>conversion</module>
+        <module>generic</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -9,6 +9,7 @@ import java.util.Observer;
  * @Author <a href="mailto:zfy_zang@163.com">Vincent</a>
  * @Create 2020/10/12
  * @Modify
+ * @see Observer
  * @since
  */
 public class ObserverDemo {

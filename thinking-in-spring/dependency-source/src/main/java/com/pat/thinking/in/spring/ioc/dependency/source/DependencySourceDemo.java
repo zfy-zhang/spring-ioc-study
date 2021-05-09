@@ -72,6 +72,7 @@ public class DependencySourceDemo {
         DependencySourceDemo demo = applicationContext.getBean(DependencySourceDemo.class);
 
 
+        System.out.println(demo.toString());
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();

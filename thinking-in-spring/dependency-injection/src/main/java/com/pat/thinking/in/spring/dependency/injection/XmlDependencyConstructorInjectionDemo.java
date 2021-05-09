@@ -10,11 +10,11 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
  * @Modify
  * @since
  */
-public class XmlDependencyConstructorSetterInjectionDemo {
+public class XmlDependencyConstructorInjectionDemo {
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-        String xmlResourcePath = "classpath:/META-INF/dependency-setter-injection.xml";
+        String xmlResourcePath = "classpath:/META-INF/dependency-constructor-injection.xml";
         // 加载 XML 资源，解析并生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 

@@ -31,6 +31,7 @@ public class TypeSafetyDependencyLookupDemo {
         displayObjectFactoryGetObject(applicationContext);
         // 演示 ObjectProvider#getIfAvailable 方法的安全性
         displayObjectProviderIfAvailable(applicationContext);
+
         // 演示 ListableBeanFactory#getIfAvailable 方法的安全性
         displayListableBeanFactoryGetBeansOfType(applicationContext);
         // 演示 ObjectProvider Stream 操作的安全性

@@ -46,7 +46,7 @@ public class HierarchicalDependencyLookupDemo {
     }
 
     private static void displayContainsBean(HierarchicalBeanFactory beanFactory, String beanName) {
-        System.out.printf("当前 BeanFactory[%s] 是否包含 bean[name : %s] : %s\n", beanFactory, beanName, beanFactory.containsBean(beanName));
+        System.out.printf("当前 BeanFactory[%s] 是否包含 bean[name : %s] : %s\n", beanFactory, beanName, containsBean(beanFactory, beanName));
     }
 
     /**

@@ -2,6 +2,7 @@ package com.pat.thinking.in.spring.dependency.injection;
 
 import com.pat.thinking.in.spring.dependency.injection.annotation.UserGroup;
 import com.pat.thinking.in.spring.ioc.overview.domain.User;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,7 +30,7 @@ public class LazyAnnotationDependencyInjectionDemo {
     ObjectProvider<User> userObjectProvider;
 
     @Autowired
-    ObjectProvider<Set<User>> userObjectFactory;
+    ObjectFactory<Set<User>> userObjectFactory;
 
     public static void main(String[] args) {
 

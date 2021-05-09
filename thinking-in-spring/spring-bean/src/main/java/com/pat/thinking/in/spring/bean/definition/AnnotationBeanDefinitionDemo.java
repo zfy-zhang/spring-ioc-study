@@ -32,7 +32,7 @@ public class AnnotationBeanDefinitionDemo {
         // 通过 BeanDefinition 注册 API
         // 1. 命名 Bean 的注册方式
         registerUserBeanDefinition(applicationContext, "pat");
-        // 1. 非命名 Bean 的注册方式
+        // 2. 非命名 Bean 的注册方式
         registerBeanDefinition(applicationContext);
         // 启动 Spring 上下文
         applicationContext.refresh();

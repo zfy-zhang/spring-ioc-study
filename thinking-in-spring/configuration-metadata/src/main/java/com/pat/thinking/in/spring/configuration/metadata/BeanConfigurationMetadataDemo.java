@@ -1,6 +1,7 @@
 package com.pat.thinking.in.spring.configuration.metadata;
 
 import com.pat.thinking.in.spring.ioc.overview.domain.User;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -23,7 +24,7 @@ public class BeanConfigurationMetadataDemo {
 
         // BeanDefinition 的定义（声明）
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(User.class);
-        beanDefinitionBuilder.addPropertyValue("name", "不才人");
+        beanDefinitionBuilder.addPropertyValue("name", "不才人").addPropertyValue("name", "不才人");
 
         // 获取 AbstractBeanDefinition
         AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();

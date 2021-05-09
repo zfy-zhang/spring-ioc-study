@@ -49,6 +49,9 @@ public class AnnotationApplicationContextAsIocContainerDemo {
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
             Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
+            for (User user : users.values()) {
+                System.out.println(user.getClass());
+            }
             System.out.println("查找所有的 User 集合对象：" + users);
         }
     }
